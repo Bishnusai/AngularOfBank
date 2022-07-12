@@ -1,0 +1,123 @@
+<!-- <app-edit *ngIf="updateAccountForm == true" [act]="act"></app-edit> -->
+<app-header></app-header>
+<div class="row">
+  <div class="card col s12">
+    <div class="sm-jumbotron center-align">
+      <h2>Add Account</h2>
+    </div>
+    <div class="row s12">
+      <div class="col s6">
+        <div class="input-field">
+          <button type="submit" class="btn-large btn-submit" routerLink="/header">Home</button>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="input-field">
+          <button type="submit" class="btn-large btn-submit" routerLink="/accountlist">Account List</button>
+        </div>
+      </div>
+    </div>
+    <form class="col s12 white" [formGroup]="accountForm" novalidate (ngSubmit)="onAccount()">
+      <br>
+      <div class="row">
+        <div class="col s6">
+          <label for="test1">Select User </label>
+          <!-- {{branchDropdown | json}} -->
+          <select name="test1" id="test1" formControlName="userBind" style="display: block !important;">
+            <option value="" class="text-primary font-weight-bolder">--Select User--</option>
+            <option *ngFor="let user of userDropdown" [value]="user.UserId">
+              <!-- put in option tag -->
+              {{user.FirstName}}
+            </option>
+
+          </select>
+          <div *ngIf="f['userBind'].touched && f['userBind'].invalid" class="decrease">
+            <div *ngIf="f['userBind'].errors && f['userBind'].errors['required']">User Name is required.</div>
+          </div>
+        </div>
+        <div class="col s6">
+          <label for="test">Select Branch</label>
+          <!-- {{branchDropdown | json}} -->
+          <select name="test" formControlName="branchBind" id="test" style="display: block !important;">
+            <option value="" class="text-primary font-weight-bolder">--Select Branch--</option>
+            <option *ngFor="let branch of branchDropdown" [value]="branch.BranchId">
+              {{branch.BranchName}}
+            </option>
+          </select>
+          <div *ngIf="f['branchBind'].touched && f['branchBind'].invalid" class="decrease">
+            <div *ngIf="f['branchBind'].errors && f['branchBind'].errors['required']">Branch is required.</div>
+          </div>
+
+          <!-- Dropdown Trigger -->
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input class="form-control" type="text" name="AccountNumber" formControlName="AccountNumber" required
+            minlength="12" maxlength="12">
+          <label>Account Number<span class="required-asterisk">*</span></label>
+          <div *ngIf="f['AccountNumber'].touched && f['AccountNumber'].invalid" class="decrease p-0">
+            <div *ngIf="f['AccountNumber'].errors && f['AccountNumber'].errors['required']">Account Number is required.</div>
+            <div *ngIf="f['AccountNumber'].errors && f['AccountNumber'].errors['AccountNumber']">Please, enter valid Account Number address.</div>
+            <div *ngIf="f['AccountNumber'].errors && f['AccountNumber'].errors['minlength']">Account Number should between 10 to 12
+              character.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="number" class="form-control" required name="MinimumBalance" formControlName="MinimumBalance"
+            minlength="4">
+          <label>Minimum Balance<span class="required-asterisk">*</span></label>
+          <!-- <div *ngIf="f['MinimumBalance'].touched && f['MinimumBalance'].invalid" class="decrease p-0">
+            <div *ngIf="f['MinimumBalance'].errors && f['MinimumBalance'].errors['required']">Minimum Balance is
+              required.</div> -->
+          <!-- <div *ngIf="f['MinimumBalance'].errors && f['MinimumBalance'].errors['MinimumBalance']">Please, enter valid Account Number address.</div> -->
+          <!-- <div *ngIf="f['MinimumBalance'].errors && f['MinimumBalance'].errors['minlength']">Minimum Balance  should 4 digit.</div> -->
+
+          <!-- </div> -->
+          <div
+            *ngIf="accountForm.controls['MinimumBalance'].invalid && (accountForm.controls['MinimumBalance'].dirty || accountForm.controls['MinimumBalance'].touched)"
+            class="decrease">
+            <div *ngIf="accountForm.controls['MinimumBalance'].errors?.['required']">Please enter Minimum Balance</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="number" name="WithdrwaLimit" class="form-control" required formControlName="WithdrwaLimit">
+          <label>WithdrwaL Limit<span class="required-asterisk">*</span></label>
+          <!-- <div *ngIf="f['WithdrwaLimit'].touched && f['WithdrwaLimit'].invalid" class="decrease p-0">
+            <div *ngIf="f['WithdrwaLimit'].errors && f['WithdrwaLimit'].errors['required']">WithdrwaLimit is required.
+            </div> -->
+          <!-- <div *ngIf="f['WithdrwaLimit'].errors && f['WithdrwaLimit'].errors['WithdrwaLimit']">Please, enter valid Account Number address.</div> -->
+          <!-- </div> -->
+          <div
+            *ngIf="accountForm.controls['WithdrwaLimit'].invalid && (accountForm.controls['WithdrwaLimit'].dirty || accountForm.controls['WithdrwaLimit'].touched)"
+            class="decrease">
+            <div *ngIf="accountForm.controls['WithdrwaLimit'].errors?.['required']">Please enter Withdrawal Balance
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="input-field col s12 ">
+          <input type="number" name="AccountBalance" formControlName="AccountBalance">
+          <label>Account Balance</label>
+        </div>
+      </div>
+
+      <p class="msg_success text-success">{{ msg }}</p>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s6">
+            <button type="submit" class="btn-large btn-submit ">Create</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.btn.edit2 {
+  background-color: darkorange;
+  border: none;
+  color: white;
+  font-size: 4px;
+  cursor: pointer;
+}
+
+.btn.trash {
+  background-color: royalblue;
+  border: none;
+  color: white;
+  font-size: 4px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.btn.edit2:hover {
+  background-color: green;
+}
+
+.btn.trash:hover {
+  background-color: red;
+}
+.button{
+  display: flex;
+}
+.pagesize{
+  display: flex;
+}
+.pagesize select{
+  display: block;
+  width: 3.5rem;
+  height: 2rem;
+  border: 1px solid gray;
+}
+/* .styleHeading{
+  margin: .2rem;
+  padding: 2rem;
+} */

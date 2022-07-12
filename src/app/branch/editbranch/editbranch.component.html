@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="row">
+  <div class="card col s12">
+    <div class="sm-jumbotron center-align">
+      <h2>Update Branch</h2>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col s6">
+        <button type="submit" class="btn-large btn-submit " routerLink="/branchlist">Back</button>
+      </div>
+    </div>
+    <form class="col s12 white" [formGroup]="updateBranchForm" (ngSubmit)="updateBranch()">
+
+
+      <div class="row">
+        <div class=" col s12">
+          <label for="BranchName">Branch Name</label>
+          <input class="form-control" id="BranchName" type="text" [(ngModel)]="branchname" name="BranchName"
+            formControlName="BranchName">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col s12">
+          <label for="BranchNumber">Branch Number</label>
+          <input class="form-control" id="BranchNumber" type="text" [(ngModel)]="branchnumber" name="BranchNumber"
+            formControlName="BranchNumber"  minlength="10" maxlength="12">
+            <div *ngIf="f['BranchNumber'].touched && f['BranchNumber'].invalid" class="decrease">
+              <div *ngIf="f['BranchNumber'].errors && f['BranchNumber'].errors['minlength']">Number should be 10
+                character.</div>
+            </div>
+        </div>
+      </div>
+
+      <!-- <p class="msg_success text-success">{{ msg }}</p> -->
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s6">
+            <button type="submit" class="btn-large btn-submit ">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

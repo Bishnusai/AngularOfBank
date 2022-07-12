@@ -1,0 +1,9 @@
+.pagesize{
+    display: flex;
+  }
+  .pagesize select{
+    display: block;
+    width: 3.5rem;
+    height: 2rem;
+    border: 1px solid gray;
+  }

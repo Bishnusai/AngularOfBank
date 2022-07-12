@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="card col s8">
+    <div class="sm-jumbotron center-align">
+      <h2>User Registration</h2>
+    </div>
+    <p class="msg_success">{{ msg }}</p>
+    <form class="col s12 " [formGroup]="userForm" (ngSubmit)="onSubmit()" #myform="ngForm">
+      <div class="row ">
+        <div class="input-field col s6">
+          <label for="FirstName"> FirstName<span class="required-asterisk">*</span> </label>
+          <input formControlName="FirstName" id="FirstName" name="FirstName" type="text" class="form-control"
+            minlength="3" maxlength="18">
+          <!-- <div  *ngIf="userForm.get('FirstName').errors && 
+            userForm.get('FirstName').hasError('required') && myform.submitted"  class='alert alert-danger'>Name is required</div> -->
+          <div *ngIf="f['FirstName'].touched && f['FirstName'].invalid" class="decrease">
+            <div *ngIf="f['FirstName'].errors && f['FirstName'].errors['required'] ">First Name is
+              required.</div>
+            <div *ngIf="f['FirstName'].errors && f['FirstName'].errors['minlength']">First Name
+              should be 3 character.</div>
+            <div *ngIf="f['FirstName'].errors && f['FirstName'].errors['maxlength'] ">First Name
+              should between 18 character.</div>
+          </div>
+        </div>
+        <div class="input-field col s6">
+          <label for="LastName">LastName</label>
+          <input type="text" id="LastName" name="LastName" formControlName="LastName">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <label for="Email">Email<span class="required-asterisk">*</span></label>
+          <input class="form-control" type="text" id="Email" name="Email" formControlName="Email">
+          <div *ngIf="f['Email'].touched && f['Email'].invalid" class="decrease p-0">
+            <div *ngIf="f['Email'].errors && f['Email'].errors['required']">Email is required.</div>
+            <div *ngIf="f['Email'].errors && f['Email'].errors['Email']">Please, enter valid email address.</div>
+          </div>
+        </div>
+
+        <div class="input-field col s6">
+          <label for="Address">Address</label>
+          <input type="text" id="Address" name="Address" formControlName="Address">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <label for="MobileNumber">MobileNumber</label>
+          <input class="form-control" type="text" id="MobileNumber" name="MobileNumber" formControlName="MobileNumber"
+            minlength="10" maxlength="12">
+          <div *ngIf="f['MobileNumber'].touched && f['MobileNumber'].invalid" class="decrease">
+            <div *ngIf="f['MobileNumber'].errors && f['MobileNumber'].errors['minlength']">Number should be 10
+              character.</div>
+          </div>
+        </div>
+
+        <div class="input-field col s6">
+          <label for="Password">Password<span class="required-asterisk">*</span></label>
+          <input class="form-control" id="Password" type="password" name="Password" formControlName="Password" readonly
+            onfocus="this.removeAttribute('readonly')" minlength="6" maxlength="12">
+          <div *ngIf="f['Password'].touched && f['Password'].invalid" class="decrease">
+            <div *ngIf="f['Password'].errors && f['Password'].errors['required']">Password is required.</div>
+            <div *ngIf="f['Password'].errors && f['Password'].errors['minlength']">Password should be 6 character.</div>
+            <div *ngIf="f['Password'].errors && f['Password'].errors['maxlength']">Password should be in between 6 to 12
+              character.</div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="input-field col s6">
+          <!-- [disabled]="!userForm.valid" -->
+          <button type="submit" class="btn-large btn-submit">Register</button>
+        </div>
+        <div class="input-field col s6">
+          <button routerLink="/login" class="btn-large btn-submit btn-link">Back to Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

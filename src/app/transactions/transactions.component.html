@@ -1,0 +1,104 @@
+<app-header></app-header>
+<div class="row">
+  <div class="card col s12">
+    <div class="sm-jumbotron center-align">
+      <h2>Do A Transaction</h2>
+    </div>
+    <div class="row s12">
+      <div class="col s6">
+        <div class="input-field">
+          <button type="submit" class="btn-large btn-submit" routerLink="/header">Home</button>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="input-field">
+          <button type="submit" class="btn-large btn-submit" routerLink="/transactionlist">Transactions List</button>
+        </div>
+      </div>
+    </div>
+    <form class="col s12 white" [formGroup]="transactionForm" (ngSubmit)="onTransactions()">
+      <br>
+      <div class="row">
+        <div class="col s6">
+          <label for="test1">Select Account</label>
+          <!-- {{accountDropdown | json}} -->
+          <select name="test1" id="test1" formControlName="accountBind" style="display: block !important;">
+            <option value="" class="text-primary font-weight-bolder">--Select Account--</option>
+            <option *ngFor="let account of accountDropdown" [value]="account.AccountId">
+              <!-- put in option tag -->
+              {{account.AccountNumber}}
+            </option>
+          </select>
+          <div *ngIf="f['accountBind'].touched && f['accountBind'].invalid" class="decrease">
+            <div *ngIf="f['accountBind'].errors && f['accountBind'].errors['required']">Acccount is required.</div>
+          </div>
+        </div>
+      </div>
+      <label>Transaction Type:</label>
+      <label>
+        <input type="radio" formControlName="transactionType" id="newdeposit" class="filled-in" value="D"
+          name="Withdrawl">
+        <span>Deposit</span>
+      </label>
+      <label>
+        <input type="radio" formControlName="transactionType" id="newwithdrawal" class="filled-in" value="W"
+          name="Withdrawl">
+        <span>Withdrawal</span>
+      </label>
+
+
+
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="TransactionsAmount">Transacton Amount<span
+              class="required-asterisk transactionamount">*</span></label>
+          <input class="form-control" type="text" required name="TransactonAmount" id="TransactionsAmount"
+            formControlName="TransactionsAmount">
+          <div *ngIf="f['TransactionsAmount'].touched && f['TransactionsAmount'].invalid" class="decrease">
+            <div *ngIf="f['TransactionsAmount'].errors && f['TransactionsAmount'].errors['required']">Transactions
+              Amount is required.
+            </div>
+            <!-- <div *ngIf="f['TransactionsAmount'].errors && f['TransactionsAmount'].errors['minlength']">TransactionsAmount should be 6 character.</div>
+            <div *ngIf="f['TransactionsAmount'].errors && f['TransactionsAmount'].errors['maxlength']">TransactionsAmount should be in between 6 to 12 -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="number" name="C100" formControlName="C100">
+          <label>C100</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="number" name="C200" formControlName="C200">
+          <label>C200</label>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="input-field col s12 ">
+          <input type="number" name="C500" formControlName="C500">
+          <label>C500</label>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="input-field col s12 ">
+          <input type="number" name="C2000" formControlName="C2000">
+          <label>C2000</label>
+        </div>
+      </div>
+      <p class="msg_success text-success">{{ msg }}</p>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s6">
+            <button type="submit" class="btn-large btn-submit ">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

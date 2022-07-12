@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+ul  li a{
+  font-weight: bold;
+  /* text-align: justify; 
+   justify-content: center; */
+}
+ul .services  li a:hover{
+  background-color: green;
+  color: whitesmoke;
+  border-radius: 1rem;
+
+}
+
+.bankingServices:hover{
+  border-radius: 17px;
+  background-color: green;
+  color: #fff !important;
+}
+.logout a{
+  height: 70px;
+  width: 70px;
+  letter-spacing: 1.3px;
+}
+.logout .logged:hover{
+  border-radius: 10px;
+  background-color: green;
+  color: #fff !important;
+}

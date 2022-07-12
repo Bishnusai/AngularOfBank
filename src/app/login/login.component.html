@@ -1,0 +1,52 @@
+<!-- <div *ngIf="isLoginError" class="red-text center error-message">
+<i class="material-icons">
+  error
+</i>Incorrect User name and Password.
+</div> -->
+<div class="card">
+  <h4 class="card-header">Login</h4>
+  <div class="card-body">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+      <div class="row s12">
+        <div class="input-field col s6">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control"  name="email" formControlName="email" readonly onfocus="this.removeAttribute('readonly')">
+          <div *ngIf="f['email'].touched && f['email'].invalid" class="decrease">
+            <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+            <div *ngIf="f['email'].errors && f['email'].errors['minlength']">Email should be 8 character.</div>
+          </div>
+        </div>
+        <div class="input-field col s6">
+          <!-- (change)="onLogin()" -->
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control" name="password" formControlName="password" readonly onfocus="this.removeAttribute('readonly')" (change)="onLogin()">
+          <div *ngIf="f['password'].touched && f['password'].invalid" class="decrease">
+            <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+            <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password should be 8 character.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row s12">
+        <div class="col s6">
+          <div class="form-group" style="padding-top: 20px;">
+            <p>Have you already Registered! Plz Login</p>
+
+            <button type="submit" class="btn btn-primary">
+              Login
+            </button>&nbsp;
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="form-group" style="padding-top: 20px;">
+            <p>Are You Not Registered! Plz Register Here</p>
+            <button type="button" class="btn btn-primary" routerLink="/signup">
+              Sign Up
+            </button>&nbsp;
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

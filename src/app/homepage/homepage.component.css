@@ -1,0 +1,13 @@
+.backgroundImage img {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    overflow: hidden;
+    
+    /* background-image: url('/UserRegistration/src/assets/pic1.jpg'); */
+  }
+  .backgroundImage img:hover{
+      opacity: 0.9;
+  }

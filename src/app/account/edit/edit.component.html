@@ -1,0 +1,69 @@
+<app-header></app-header>
+<div class="row">
+  <div class="card col s12">
+    <div class="sm-jumbotron center-align">
+      <h2>Update Account</h2>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col s6">
+        <button type="submit" class="btn-large btn-submit " routerLink="/accountlist">Back</button>
+      </div>
+    </div>
+    <form class="col s12 white" [formGroup]="updateAccountForm" (ngSubmit)="updateAccount()">
+
+      <div>
+        <h6 style="color: green;">Name : <span class="editInfo">{{fNameViewforEdit}}</span></h6>
+      </div>
+
+      <div>
+        <h6 style="color: green;">Branch Name: <span class="editInfo">{{bNameViewForEdit}}</span></h6>
+      </div>
+     
+      <div class="row">
+        <div class=" col s12">
+          <label for="AccountNumber">Account Number</label>
+          <input class="validate" id="AccountNumber" type="text" [(ngModel)]="AccountNum" name="AccountNumber"
+            formControlName="AccountNumber" minlength="12" maxlength="12">
+            <div *ngIf="f['AccountNumber'].touched && f['AccountNumber'].invalid" class="decrease">
+              <div *ngIf="f['AccountNumber'].errors && f['AccountNumber'].errors['minlength']">Account Number should be 12
+                character.</div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col s12">
+          <label for="MinimumBalance">Minimum Balance</label>
+
+          <input type="number" id="MinimumBalance" name="MinimumBalance" [(ngModel)]="MinBal"
+            formControlName="MinimumBalance">
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col s12">
+          <label for="WithdrwaLimit">WithdrwaL Limit</label>
+          <input type="number" id="WithdrwaLimit" name="WithdrwaLimit" [(ngModel)]="withdrawlLim"
+            formControlName="WithdrawlLimit">
+        </div>
+      </div>
+      <div class="row ">
+        <div class=" col s12 ">
+          <label for="AccountBalance">Account Balance</label>
+          <input type="number" id="AccountBalance" name="AccountBalance" [(ngModel)]="AccBal"
+            formControlName="AccountBalance">
+        </div>
+      </div>
+
+      <!-- <p class="msg_success text-success">{{ msg }}</p> -->
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field col s6">
+            <button type="submit" class="btn-large btn-submit ">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
